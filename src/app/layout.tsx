@@ -56,13 +56,23 @@ export const metadata = {
       'en-IN': baseUrl,
     },
   },
-  otherMeta: {
+  other: {
     'geo.region': 'IN-TN',
     'geo.placename': 'Tirunelveli',
     'geo.country': 'IN',
     'googlebot': 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1',
   },
 };
+
+const websiteJsonLd = {
+  '@type': 'WebSite',
+  '@id': `${baseUrl}#website`,
+  name: BUSINESS_CONFIG.name,
+  url: baseUrl,
+  inLanguage: 'en-IN',
+  description:
+    'Family holidays, college industrial visits, school trips and office tours — bus, hotel, food and sightseeing all planned for you.',
+} as const;
 
 const localBusinessJsonLd = {
   '@context': 'https://schema.org',
@@ -135,11 +145,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           fetchPriority="high"
         />
 
-        {/* LocalBusiness JSON-LD for SEO & geo */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(localBusinessJsonLd),
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@graph': [websiteJsonLd, localBusinessJsonLd],
+            }),
           }}
         />
       </head>

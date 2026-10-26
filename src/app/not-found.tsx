@@ -1,13 +1,26 @@
-'use client';
-
+import React from 'react';
 import { Navbar } from '../components/layout/Navbar';
 import { Footer } from '../components/layout/Footer';
 import { ArrowUpRight } from 'lucide-react';
+import { buildWhatsAppUrl, DEFAULT_WA_MESSAGE } from '../data/business';
+import { GoBackButton } from '../components/ui/GoBackButton';
+
+export const metadata = {
+  title: 'Page Not Found',
+  description:
+    'The page you are looking for could not be found. Head back to the Prince Holidays homepage to plan your next journey.',
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
 
 export default function NotFound() {
   return (
     <>
-      <Navbar onPlanTrip={() => {}} />
+      {/* No onPlanTrip prop: Navbar safely no-ops when the enquiry section
+          (which only exists on the homepage) is not in the DOM. */}
+      <Navbar />
 
       <main className="min-h-[60vh] flex flex-col items-center justify-center text-center px-5 sm:px-8">
         <h1 className="font-display text-4xl sm:text-6xl font-semibold tracking-tight text-[#231A10]">
@@ -26,8 +39,10 @@ export default function NotFound() {
             <ArrowUpRight className="w-3.5 h-3.5" />
           </a>
 
+          <GoBackButton />
+
           <a
-            href="https://wa.me/919715057769?text=Hello%20Prince%20Holidays%2C%20I%20would%20like%20to%20plan%20a%20trip."
+            href={buildWhatsAppUrl(DEFAULT_WA_MESSAGE)}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-[#D9D1C3] text-[#231A10] font-mono text-xs uppercase tracking-[0.18em] hover:border-[#FD6703] hover:text-[#FD6703] transition-colors"

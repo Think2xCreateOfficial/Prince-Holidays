@@ -1,7 +1,16 @@
 import { MetadataRoute } from 'next';
 
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000';
+// Normalized (no trailing slash) to keep every URL canonical and consistent.
+const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000').replace(
+  /\/+$/,
+  ''
+);
 
+/**
+ * Prince Holidays is a single-page site (one homepage with anchor sections).
+ * Only real, publicly reachable pages belong here — no anchor URLs, no
+ * duplicates, no private routes.
+ */
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
