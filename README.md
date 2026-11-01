@@ -37,7 +37,7 @@ npm run build
 npm start
 ```
 
-The app runs at `http://localhost:3000`.
+The app runs at `https://princeholidays.think2xcreate.com`.
 
 ## Available scripts
 

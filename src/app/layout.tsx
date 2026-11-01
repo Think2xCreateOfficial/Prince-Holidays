@@ -2,7 +2,7 @@ import './globals.css';
 import ClientLayout from './client-layout';
 import { BUSINESS_CONFIG } from '../data/business';
 
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000';
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://princeholidays.think2xcreate.com';
 
 export const metadata = {
   metadataBase: new URL(baseUrl),

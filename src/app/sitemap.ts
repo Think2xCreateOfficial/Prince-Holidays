@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 
 // Normalized (no trailing slash) to keep every URL canonical and consistent.
-const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000').replace(
+const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? 'https://princeholidays.think2xcreate.com').replace(
   /\/+$/,
   ''
 );
